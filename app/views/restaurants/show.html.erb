@@ -4,7 +4,6 @@
 <h5>Phone: <%= @restaurant.phone_number %></h5>
 <%= link_to 'All restaurants', restaurants_path(@restaurant), class: "btn btn-primary" %>
 <%= link_to 'Edit restaurant', edit_restaurant_path(@restaurant), class: "btn btn-primary" %>
-<%= link_to 'Write review', new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
 <br>
 <p></p>
 <h4>Reviews</h4>
@@ -16,3 +15,10 @@
     <% end %>
   </li>
 </ul>
+<p></p>
+<h1>Add review for <%= @restaurant.name %></h1>
+<%= simple_form_for [ @restaurant, @review ] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.submit "Submit review", class: "btn btn-primary" %>
+<% end %>
